@@ -179,4 +179,65 @@ class KnpiEcosystemTest extends TestCase
         $this->assertEquals('Aspirasi telah didisposisi ke Bidang Ketenagakerjaan & Vokasi DPP KNPI.', $ticket->fresh()->admin_notes);
         $this->assertEquals($user->id, $ticket->fresh()->handled_by);
     }
+
+    /**
+     * Test modern login page renders with Captcha challenge.
+     */
+    public function test_login_page_renders_with_modern_design_and_captcha(): void
+    {
+        $response = $this->get('/login');
+
+        $response->assertStatus(200);
+        $response->assertSee('Pusat Kendali Ekosistem Pemuda');
+        $response->assertSee('Verifikasi Keamanan (Anti-Bot)');
+        $response->assertSessionHas('captcha_answer');
+        $response->assertSessionHas('captcha_question');
+    }
+
+    /**
+     * Test login fails when captcha is invalid.
+     */
+    public function test_login_fails_with_invalid_captcha(): void
+    {
+        $this->get('/login');
+
+        $response = $this->post('/login', [
+            'email' => 'admin@knpi.or.id',
+            'password' => 'password123',
+            'captcha' => 9999, // wrong captcha answer
+        ]);
+
+        $response->assertSessionHasErrors('captcha');
+        $this->assertGuest();
+    }
+
+    /**
+     * Test login succeeds when valid captcha is provided.
+     */
+    public function test_login_succeeds_with_valid_captcha(): void
+    {
+        $this->get('/login');
+        $correctAnswer = session('captcha_answer');
+
+        $response = $this->post('/login', [
+            'email' => 'admin@knpi.or.id',
+            'password' => 'password123',
+            'captcha' => $correctAnswer,
+        ]);
+
+        $response->assertRedirect('/admin/dashboard');
+        $this->assertAuthenticated();
+    }
+
+    /**
+     * Test dynamic captcha refresh endpoint.
+     */
+    public function test_captcha_refresh_endpoint(): void
+    {
+        $response = $this->getJson('/captcha/refresh');
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure(['question']);
+        $this->assertNotNull(session('captcha_answer'));
+    }
 }

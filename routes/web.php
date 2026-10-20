@@ -32,10 +32,11 @@ Route::post('/agenda/{event}/register', [EventRegistrationController::class, 'st
 Route::post('/aspirasi', [AspirationController::class, 'store'])->name('aspirasi.store');
 Route::get('/aspirasi/lacak', [AspirationController::class, 'track'])->name('aspirasi.track');
 
-// Authentication Routes
+// Authentication & Security Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+    Route::get('/captcha/refresh', [AuthController::class, 'refreshCaptcha'])->name('captcha.refresh');
 });
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 

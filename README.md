@@ -11,7 +11,7 @@
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-v3%2Fv4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind"></a>
   <a href="https://alpinejs.dev"><img src="https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpinedotjs&logoColor=white" alt="Alpine"></a>
   <a href="https://mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"></a>
-  <a href="#-pengujian-otomatis-test-suite"><img src="https://img.shields.io/badge/Tests-8%20Passed-emerald?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests"></a>
+  <a href="#-pengujian-otomatis-test-suite"><img src="https://img.shields.io/badge/Tests-12%20Passed%20(49%20assertions)-emerald?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests"></a>
 </p>
 
 > **"Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas"**  
@@ -213,9 +213,13 @@ php artisan test --filter=KnpiEcosystemTest
   ✓ admin dashboard requires auth and renders metrics
   ✓ admin can verify okp
   ✓ admin can update aspiration ticket
+  ✓ login page renders with modern design and captcha
+  ✓ login fails with invalid captcha
+  ✓ login succeeds with valid captcha
+  ✓ captcha refresh endpoint
 
-  Tests:    8 passed (35 assertions)
-  Duration: 17.38s
+  Tests:    12 passed (49 assertions)
+  Duration: 4.10s
 ```
 
 ---
