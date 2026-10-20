@@ -5,9 +5,7 @@
     <div class="max-w-md w-full bg-white rounded-2xl border border-slate-200 p-8 shadow-md">
         <!-- Logo & Header -->
         <div class="text-center mb-8">
-            <div class="w-12 h-12 rounded-xl bg-royal-800 text-white font-black text-xl flex items-center justify-center mx-auto shadow-md">
-                <span class="text-gold-400">KN</span>PI
-            </div>
+            <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-16 h-16 object-contain mx-auto drop-shadow-md">
             <h2 class="text-2xl font-black text-slate-900 tracking-tight mt-4">
                 Paper Admin Portal
             </h2>

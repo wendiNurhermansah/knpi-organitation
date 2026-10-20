@@ -10,6 +10,7 @@
     <meta name="description" content="Portal resmi Komite Nasional Pemuda Indonesia (KNPI). Ekosistem digital integrasi Organisasi Kemasyarakatan Pemuda (OKP), verifikasi legalitas, layanan e-Aspirasi, dan agenda kepemudaan nasional.">
     <meta name="keywords" content="KNPI, Pemuda Indonesia, OKP, e-Aspirasi, Kepemudaan, Dewan Pengurus Pusat, Karang Taruna, Indonesia Emas 2045">
     <meta name="author" content="DPP KNPI">
+    <link rel="icon" type="image/png" href="{{ asset('images/knpi-logo.png') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,12 +102,10 @@
             <div class="flex justify-between h-20 items-center">
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-royal-800 to-royal-900 flex items-center justify-center shadow-md shadow-royal-900/20 text-white font-black text-xl border border-royal-700 group-hover:scale-105 transition-transform">
-                        <span class="text-gold-400">KN</span>PI
-                    </div>
+                    <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-12 h-12 object-contain group-hover:scale-105 transition-transform drop-shadow-sm">
                     <div>
-                        <div class="font-extrabold text-xl text-royal-800 tracking-tight leading-none group-hover:text-royal-900 transition">
-                            KNPI <span class="text-gold-500 text-xs uppercase px-1.5 py-0.5 bg-gold-50 rounded border border-gold-200 ml-1">Digital</span>
+                        <div class="font-extrabold text-xl text-royal-800 tracking-tight leading-none group-hover:text-royal-900 transition flex items-center">
+                            KNPI <span class="text-gold-600 text-xs uppercase px-1.5 py-0.5 bg-gold-50 rounded border border-gold-200 ml-1.5 font-bold tracking-normal">Digital</span>
                         </div>
                         <p class="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
                             Komite Nasional Pemuda Indonesia
@@ -260,9 +259,7 @@
                 <!-- Col 1: About KNPI -->
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-royal-800 flex items-center justify-center text-white font-extrabold text-lg border border-royal-700">
-                            <span class="text-gold-400">KN</span>PI
-                        </div>
+                        <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-11 h-11 object-contain drop-shadow-md">
                         <span class="font-extrabold text-xl text-white tracking-tight">KNPI Digital Ecosystem</span>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed pr-6">

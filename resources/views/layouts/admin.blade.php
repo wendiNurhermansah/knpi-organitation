@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Paper Admin' }} | KNPI Digital Ecosystem</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/knpi-logo.png') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,9 +67,7 @@
             <!-- Sidebar Header -->
             <div class="h-20 px-6 flex items-center justify-between border-b border-slate-100">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-lg bg-royal-800 flex items-center justify-center text-white font-black text-lg shadow-xs">
-                        <span class="text-gold-400">KN</span>PI
-                    </div>
+                    <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-10 h-10 object-contain drop-shadow-xs">
                     <div>
                         <div class="font-bold text-base text-slate-900 tracking-tight leading-none">KNPI Admin</div>
                         <span class="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">Paper Minimalist</span>

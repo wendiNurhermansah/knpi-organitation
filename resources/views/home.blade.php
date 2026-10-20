@@ -66,10 +66,13 @@
                                 <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Pemuda Indonesia Bersatu" class="w-full h-full object-cover">
 
                                 <!-- Floating Badge on Hero Image -->
-                                <div class="absolute bottom-4 left-4 right-4 z-20 bg-slate-900/80 backdrop-blur-md rounded-xl p-3 border border-white/10 flex items-center justify-between">
-                                    <div>
-                                        <div class="text-[11px] text-gold-400 font-bold uppercase tracking-wider">KNPI Satu Hati</div>
-                                        <div class="text-xs font-semibold text-white">Kongres Pemuda Nasional 2026</div>
+                                <div class="absolute bottom-4 left-4 right-4 z-20 bg-slate-900/85 backdrop-blur-md rounded-xl p-3 border border-white/10 flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-9 h-9 object-contain drop-shadow-xs">
+                                        <div>
+                                            <div class="text-[10px] text-gold-400 font-bold uppercase tracking-wider">KNPI Satu Hati</div>
+                                            <div class="text-xs font-semibold text-white">Kongres Pemuda Nasional 2026</div>
+                                        </div>
                                     </div>
                                     <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                                         Aktif

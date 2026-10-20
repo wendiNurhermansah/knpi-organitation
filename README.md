@@ -1,11 +1,18 @@
-# KNPI Digital Ecosystem (Komite Nasional Pemuda Indonesia)
+<p align="center">
+  <img src="public/images/knpi-logo.png" width="140" alt="Logo Resmi DPP KNPI">
+</p>
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
-[![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3%2Fv4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpinedotjs&logoColor=white)](https://alpinejs.dev)
-[![MySQL 8.0](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
-[![Tests Passing](https://img.shields.io/badge/Tests-8%20Passed%20(35%20assertions)-emerald?style=for-the-badge&logo=githubactions&logoColor=white)](#pengujian-otomatis-test-suite)
+<h1 align="center">KNPI Digital Ecosystem</h1>
+<p align="center"><strong>Komite Nasional Pemuda Indonesia (DPP KNPI)</strong></p>
+
+<p align="center">
+  <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"></a>
+  <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"></a>
+  <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-v3%2Fv4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind"></a>
+  <a href="https://alpinejs.dev"><img src="https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpinedotjs&logoColor=white" alt="Alpine"></a>
+  <a href="https://mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"></a>
+  <a href="#-pengujian-otomatis-test-suite"><img src="https://img.shields.io/badge/Tests-8%20Passed-emerald?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests"></a>
+</p>
 
 > **"Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas"**  
 > *Portal Resmi Konsolidasi Organisasi Kemasyarakatan Pemuda (OKP), Verifikasi Legalitas SK, dan Kanal e-Aspirasi Publik Terintegrasi DPP KNPI.*
