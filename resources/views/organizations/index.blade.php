@@ -5,9 +5,9 @@
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-slate-200 gap-4">
         <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-royal-800">Direktori Resmi</span>
-            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Direktori OKP Terdaftar</h1>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">Data resmi Organisasi Kemasyarakatan Pemuda yang berhimpun di Komite Nasional Pemuda Indonesia.</p>
+            <span class="text-xs font-bold uppercase tracking-wider text-royal-800">{{ __('messages.okp.tag') }}</span>
+            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">{{ __('messages.okp.title') }}</h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">{{ __('messages.okp.sub') }}</p>
         </div>
 
         <!-- Search input -->
@@ -25,13 +25,13 @@
     <!-- Status Filter Buttons -->
     <div class="flex items-center gap-2 py-6">
         <a href="{{ route('okp.index', ['status' => 'verified', 'q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition {{ $status === 'verified' ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">
-            Terverifikasi ({{ $stats['total_verified'] }})
+            {{ __('messages.okp.verified') }} ({{ $stats['total_verified'] }})
         </a>
         <a href="{{ route('okp.index', ['status' => 'pending', 'q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition {{ $status === 'pending' ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">
-            Menunggu Verifikasi ({{ $stats['total_pending'] }})
+            {{ __('messages.okp.pending') }} ({{ $stats['total_pending'] }})
         </a>
         <a href="{{ route('okp.index', ['status' => 'all', 'q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition {{ $status === 'all' ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">
-            Semua OKP
+            {{ __('messages.okp.see_all') }}
         </a>
     </div>
 

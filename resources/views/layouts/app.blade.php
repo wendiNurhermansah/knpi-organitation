@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title ?? 'KNPI Digital Ecosystem - Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas' }}</title>
+    <title>{{ $title ?? 'KNPI Digital Ecosystem - ' . __('messages.hero.title_1') . ' ' . __('messages.hero.title_2') }}</title>
     
     <!-- Meta & SEO -->
-    <meta name="description" content="Portal resmi Komite Nasional Pemuda Indonesia (KNPI). Ekosistem digital integrasi Organisasi Kemasyarakatan Pemuda (OKP), verifikasi legalitas, layanan e-Aspirasi, dan agenda kepemudaan nasional.">
+    <meta name="description" content="{{ __('messages.hero.desc') }}">
     <meta name="keywords" content="KNPI, Pemuda Indonesia, OKP, e-Aspirasi, Kepemudaan, Dewan Pengurus Pusat, Karang Taruna, Indonesia Emas 2045">
     <meta name="author" content="DPP KNPI">
     <link rel="icon" type="image/png" href="{{ asset('images/knpi-logo.png') }}">
@@ -68,30 +68,36 @@
 </head>
 <body class="bg-paper text-slate-800 antialiased font-sans selection:bg-gold-500 selection:text-white flex flex-col min-h-screen">
 
-    <!-- 1. Topbar Civic Header -->
+    <!-- 1. Topbar Civic Header with Multi-language Switcher -->
     <header class="bg-slate-900 text-slate-300 text-xs border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center space-x-3">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-royal-800 text-blue-200 border border-royal-700">
-                    PORTAL RESMI
+                    {{ __('messages.topbar.official_portal') }}
                 </span>
                 <span class="hidden md:inline text-slate-400">
-                    Dewan Pengurus Pusat Komite Nasional Pemuda Indonesia (DPP KNPI)
+                    {{ __('messages.topbar.knpi_full') }}
                 </span>
             </div>
-            <div class="flex items-center space-x-5 text-slate-400">
-                <span class="flex items-center gap-1.5">
-                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i>
-                    Graha Pemuda DPP KNPI, Jakarta
-                </span>
+            <div class="flex items-center space-x-4 sm:space-x-5 text-slate-400">
                 <span class="hidden sm:flex items-center gap-1.5">
-                    <i data-lucide="mail" class="w-3.5 h-3.5 text-gold-500"></i>
-                    sekretariat@knpi.or.id
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i>
+                    {{ __('messages.topbar.location') }}
                 </span>
                 <a href="{{ route('aspirasi.track') }}" class="text-gold-400 hover:text-gold-300 font-medium transition flex items-center gap-1">
                     <i data-lucide="search" class="w-3.5 h-3.5"></i>
-                    Lacak Tiket
+                    {{ __('messages.topbar.track_ticket') }}
                 </a>
+
+                <!-- Language Switcher Pill -->
+                <div class="inline-flex items-center rounded-md bg-slate-800 p-0.5 border border-slate-700">
+                    <a href="{{ route('locale.switch', 'id') }}" class="px-2 py-0.5 rounded text-[11px] font-bold transition flex items-center gap-1 {{ app()->getLocale() === 'id' ? 'bg-royal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white' }}" title="Bahasa Indonesia">
+                        <span>🇮🇩</span> <span class="font-mono">ID</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-2 py-0.5 rounded text-[11px] font-bold transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-royal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white' }}" title="English">
+                        <span>🇬🇧</span> <span class="font-mono">EN</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -116,22 +122,22 @@
                 <!-- Desktop Navigation Links -->
                 <div class="hidden lg:flex items-center space-x-1">
                     <a href="{{ route('home') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('home') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
-                        Home
+                        {{ __('messages.nav.home') }}
                     </a>
                     <a href="{{ route('berita.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('berita.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
-                        Berita Pemuda
+                        {{ __('messages.nav.news') }}
                     </a>
                     <a href="{{ route('okp.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('okp.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
-                        Direktori OKP
+                        {{ __('messages.nav.okp') }}
                     </a>
                     <a href="{{ route('agenda.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('agenda.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
-                        Agenda & Kegiatan
+                        {{ __('messages.nav.agenda') }}
                     </a>
                     <a href="{{ route('home') }}#aspirasi" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
-                        e-Aspirasi
+                        {{ __('messages.nav.aspiration') }}
                     </a>
                     <a href="{{ route('aspirasi.track') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
-                        Lacak Tiket
+                        {{ __('messages.nav.track') }}
                     </a>
                 </div>
 
@@ -140,27 +146,37 @@
                     @auth
                         <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-royal-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition shadow-xs">
                             <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-                            Dashboard Admin
+                            {{ __('messages.nav.dashboard') }}
                         </a>
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="p-2.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition" title="Keluar">
+                            <button type="submit" class="p-2.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition" title="{{ __('messages.admin.logout') }}">
                                 <i data-lucide="log-out" class="w-4 h-4"></i>
                             </button>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-100 transition">
-                            Log In
+                            {{ __('messages.nav.login') }}
                         </a>
                         <a href="{{ route('home') }}#aspirasi" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold text-white bg-gold-500 hover:bg-gold-600 active:scale-95 transition shadow-sm shadow-gold-500/25">
                             <i data-lucide="send" class="w-4 h-4"></i>
-                            Kirim Aspirasi
+                            {{ __('messages.nav.send_aspiration') }}
                         </a>
                     @endauth
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center">
+                <div class="lg:hidden flex items-center space-x-2">
+                    <!-- Mobile Language Switcher -->
+                    <div class="inline-flex items-center rounded-md bg-slate-100 p-0.5 border border-slate-200">
+                        <a href="{{ route('locale.switch', 'id') }}" class="px-2 py-0.5 rounded text-[10px] font-bold transition {{ app()->getLocale() === 'id' ? 'bg-royal-800 text-white' : 'text-slate-600' }}">
+                            ID
+                        </a>
+                        <a href="{{ route('locale.switch', 'en') }}" class="px-2 py-0.5 rounded text-[10px] font-bold transition {{ app()->getLocale() === 'en' ? 'bg-royal-800 text-white' : 'text-slate-600' }}">
+                            EN
+                        </a>
+                    </div>
+
                     <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="p-2 rounded-lg text-slate-600 hover:text-royal-800 hover:bg-slate-100 focus:outline-none">
                         <i x-show="!mobileMenuOpen" data-lucide="menu" class="w-6 h-6"></i>
                         <i x-show="mobileMenuOpen" x-cloak data-lucide="x" class="w-6 h-6"></i>
@@ -172,34 +188,34 @@
         <!-- Mobile Menu Dropdown -->
         <div x-show="mobileMenuOpen" x-cloak class="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-1 shadow-lg">
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                Home
+                {{ __('messages.nav.home') }}
             </a>
             <a href="{{ route('berita.index') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                Berita Pemuda
+                {{ __('messages.nav.news') }}
             </a>
             <a href="{{ route('okp.index') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                Direktori OKP
+                {{ __('messages.nav.okp') }}
             </a>
             <a href="{{ route('agenda.index') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                Agenda & Kegiatan
+                {{ __('messages.nav.agenda') }}
             </a>
             <a href="{{ route('home') }}#aspirasi" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                e-Aspirasi
+                {{ __('messages.nav.aspiration') }}
             </a>
             <a href="{{ route('aspirasi.track') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
-                Lacak Tiket Aspirasi
+                {{ __('messages.nav.track') }}
             </a>
             <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
                 @auth
                     <a href="{{ route('admin.dashboard') }}" class="text-center px-4 py-2.5 rounded-lg text-sm font-semibold bg-royal-800 text-white">
-                        Dashboard Admin
+                        {{ __('messages.nav.dashboard') }}
                     </a>
                 @else
                     <a href="{{ route('login') }}" class="text-center px-4 py-2.5 rounded-lg text-sm font-semibold border border-slate-300 text-slate-700">
-                        Log In
+                        {{ __('messages.nav.login') }}
                     </a>
                     <a href="{{ route('home') }}#aspirasi" class="text-center px-4 py-2.5 rounded-lg text-sm font-bold bg-gold-500 text-white">
-                        Kirim Aspirasi Sekarang
+                        {{ __('messages.nav.send_aspiration') }}
                     </a>
                 @endauth
             </div>
@@ -263,7 +279,7 @@
                         <span class="font-extrabold text-xl text-white tracking-tight">KNPI Digital Ecosystem</span>
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed pr-6">
-                        Wadah berhimpun resmi Organisasi Kemasyarakatan Pemuda (OKP) seluruh Indonesia. Menjadi episentrum konsolidasi gerakan pemuda, perumusan gagasan strategis kebangsaan, dan saluran aspirasi pemuda terintegrasi.
+                        {{ __('messages.footer.about') }}
                     </p>
                     <div class="flex items-center space-x-3 text-slate-400">
                         <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-royal-800 hover:text-white flex items-center justify-center transition">
@@ -284,53 +300,52 @@
                 <!-- Col 2: Navigasi Cepat -->
                 <div>
                     <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-500 pl-2">
-                        Navigasi
+                        {{ __('messages.footer.nav_title') }}
                     </h3>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="{{ route('home') }}" class="hover:text-gold-400 transition">Beranda Utama</a></li>
-                        <li><a href="{{ route('berita.index') }}" class="hover:text-gold-400 transition">Warta Pemuda</a></li>
-                        <li><a href="{{ route('okp.index') }}" class="hover:text-gold-400 transition">Direktori OKP</a></li>
-                        <li><a href="{{ route('agenda.index') }}" class="hover:text-gold-400 transition">Kalender Agenda</a></li>
-                        <li><a href="{{ route('home') }}#aspirasi" class="hover:text-gold-400 transition">Kanal e-Aspirasi</a></li>
+                        <li><a href="{{ route('home') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.home') }}</a></li>
+                        <li><a href="{{ route('berita.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.news') }}</a></li>
+                        <li><a href="{{ route('okp.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.okp') }}</a></li>
+                        <li><a href="{{ route('agenda.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.agenda') }}</a></li>
+                        <li><a href="{{ route('home') }}#aspirasi" class="hover:text-gold-400 transition">{{ __('messages.footer.aspiration') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Layanan Pemuda -->
                 <div>
                     <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-500 pl-2">
-                        Layanan Publik
+                        {{ __('messages.footer.services_title') }}
                     </h3>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="{{ route('aspirasi.track') }}" class="hover:text-gold-400 transition">Lacak Status Tiket</a></li>
-                        <li><a href="{{ route('okp.index') }}" class="hover:text-gold-400 transition">Verifikasi SK Legalitas</a></li>
-                        <li><a href="{{ route('agenda.index') }}" class="hover:text-gold-400 transition">Pendaftaran Program</a></li>
-                        <li><a href="{{ route('login') }}" class="hover:text-gold-400 transition">Portal Masuk Pengurus</a></li>
+                        <li><a href="{{ route('aspirasi.track') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.track_status') }}</a></li>
+                        <li><a href="{{ route('okp.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.verify_sk') }}</a></li>
+                        <li><a href="{{ route('agenda.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.register_program') }}</a></li>
+                        <li><a href="{{ route('login') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.admin_login') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 4: Sekretariat -->
                 <div>
                     <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-500 pl-2">
-                        Sekretariat DPP
+                        {{ __('messages.footer.secretariat_title') }}
                     </h3>
                     <p class="text-sm text-slate-400 leading-relaxed mb-3">
-                        Gedung Graha Pemuda DPP KNPI<br>
-                        Jl. HR Rasuna Said Kav. C-22, Kuningan, Karet Kuningan, Setiabudi, Jakarta Selatan 12920.
+                        {{ __('messages.footer.secretariat_address') }}
                     </p>
                     <p class="text-sm text-slate-400">
-                        <span class="text-white font-medium">Telepon:</span> (021) 525-4911<br>
-                        <span class="text-white font-medium">Email:</span> dpp@knpi.or.id
+                        <span class="text-white font-medium">{{ __('messages.footer.phone_label') }}:</span> (021) 525-4911<br>
+                        <span class="text-white font-medium">{{ __('messages.footer.email_label') }}:</span> dpp@knpi.or.id
                     </p>
                 </div>
             </div>
 
             <!-- Bottom Copyright & Disclaimer -->
             <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-                <p>© 2026 DPP Komite Nasional Pemuda Indonesia (KNPI). Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>© 2026 {{ __('messages.footer.rights') }}</p>
                 <div class="flex items-center space-x-6">
-                    <a href="#" class="hover:text-slate-400 transition">Kebijakan Privasi</a>
-                    <a href="#" class="hover:text-slate-400 transition">Syarat & Ketentuan</a>
-                    <a href="{{ route('login') }}" class="hover:text-gold-400 transition">Admin Portal</a>
+                    <a href="#" class="hover:text-slate-400 transition">{{ __('messages.footer.privacy') }}</a>
+                    <a href="#" class="hover:text-slate-400 transition">{{ __('messages.footer.terms') }}</a>
+                    <a href="{{ route('login') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.admin_portal') }}</a>
                 </div>
             </div>
         </div>

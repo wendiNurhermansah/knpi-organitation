@@ -4,17 +4,17 @@
     <!-- Dashboard Header -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 gap-4">
         <div>
-            <h1 class="text-2xl font-black text-slate-900 tracking-tight">Dashboard</h1>
-            <p class="text-xs text-slate-500 mt-0.5">Ringkasan operasional ekosistem KNPI Digital & verifikasi legalitas.</p>
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight">{{ __('messages.admin.dashboard') }}</h1>
+            <p class="text-xs text-slate-500 mt-0.5">{{ __('messages.admin.desc') }}</p>
         </div>
         <div class="flex items-center gap-2">
             <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5"></span>
-                Sistem Online
+                {{ __('messages.admin.system_online') }}
             </span>
             <a href="{{ route('admin.okp.create') }}" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-royal-800 hover:bg-royal-900 transition shadow-xs">
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                Tambah OKP
+                {{ __('messages.admin.add_okp') }}
             </a>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <!-- Card 1: Total OKP Terverifikasi -->
         <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition">
             <div class="flex items-center justify-between text-slate-400 mb-2">
-                <span class="text-xs font-semibold text-slate-500">Total OKP Terverifikasi</span>
+                <span class="text-xs font-semibold text-slate-500">{{ __('messages.admin.stats.verified_okp') }}</span>
                 <div class="w-7 h-7 rounded-md bg-blue-50 text-royal-800 flex items-center justify-center">
                     <i data-lucide="trending-up" class="w-4 h-4"></i>
                 </div>
@@ -35,14 +35,14 @@
             </div>
             <div class="mt-2 flex items-center text-[11px] text-emerald-600 font-medium">
                 <i data-lucide="shield-check" class="w-3.5 h-3.5 mr-1"></i>
-                Legalitas SK Aktif & Sah
+                {{ __('messages.admin.stats.verified_okp_sub') }}
             </div>
         </div>
 
         <!-- Card 2: OKP Menunggu Verifikasi -->
         <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition">
             <div class="flex items-center justify-between text-slate-400 mb-2">
-                <span class="text-xs font-semibold text-slate-500">OKP Butuh Verifikasi</span>
+                <span class="text-xs font-semibold text-slate-500">{{ __('messages.admin.stats.pending_okp') }}</span>
                 <div class="w-7 h-7 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center">
                     <i data-lucide="clock" class="w-4 h-4"></i>
                 </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="mt-2 flex items-center text-[11px] text-slate-500 font-medium">
                 <a href="{{ route('admin.okp.index', ['status' => 'pending']) }}" class="text-royal-800 hover:underline">
-                    Periksa berkas SK &rarr;
+                    {{ __('messages.admin.stats.pending_okp_sub') }} &rarr;
                 </a>
             </div>
         </div>
@@ -60,7 +60,7 @@
         <!-- Card 3: Total Aspiration -->
         <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition">
             <div class="flex items-center justify-between text-slate-400 mb-2">
-                <span class="text-xs font-semibold text-slate-500">Total Aspirasi Pemuda</span>
+                <span class="text-xs font-semibold text-slate-500">{{ __('messages.admin.stats.total_aspirations') }}</span>
                 <div class="w-7 h-7 rounded-md bg-blue-50 text-royal-800 flex items-center justify-center">
                     <i data-lucide="ticket" class="w-4 h-4"></i>
                 </div>
@@ -69,14 +69,14 @@
                 {{ number_format($totalAspirationCount) }}
             </div>
             <div class="mt-2 flex items-center text-[11px] text-slate-500 font-medium">
-                <span class="text-amber-600 font-bold mr-1">{{ $pendingAspirationCount }}</span> tiket belum tuntas
+                <span class="text-amber-600 font-bold mr-1">{{ $pendingAspirationCount }}</span> {{ __('messages.admin.stats.pending_aspirations_sub') }}
             </div>
         </div>
 
         <!-- Card 4: Berita Publikasi -->
         <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-2xs hover:border-slate-300 transition">
             <div class="flex items-center justify-between text-slate-400 mb-2">
-                <span class="text-xs font-semibold text-slate-500">Berita Dipublikasi</span>
+                <span class="text-xs font-semibold text-slate-500">{{ __('messages.admin.stats.total_news') }}</span>
                 <div class="w-7 h-7 rounded-md bg-slate-50 text-slate-600 flex items-center justify-center">
                     <i data-lucide="newspaper" class="w-4 h-4"></i>
                 </div>
@@ -85,7 +85,7 @@
                 {{ number_format($totalNewsCount) }}
             </div>
             <div class="mt-2 flex items-center text-[11px] text-slate-500 font-medium">
-                <span>{{ $upcomingEventsCount }} agenda aktif</span>
+                <span>{{ $upcomingEventsCount }} {{ __('messages.admin.stats.active_agendas_sub') }}</span>
             </div>
         </div>
 
@@ -95,8 +95,8 @@
     <div class="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-                <h2 class="font-bold text-sm text-slate-900">Recent OKP Verification</h2>
-                <p class="text-[11px] text-slate-400">Daftar verifikasi SK legalitas Kemenkumham dan status keanggotaan OKP</p>
+                <h2 class="font-bold text-sm text-slate-900">{{ __('messages.admin.recent_okp') }}</h2>
+                <p class="text-[11px] text-slate-400">{{ __('messages.admin.recent_okp_sub') }}</p>
             </div>
             <div class="flex items-center gap-2">
                 <a href="{{ route('admin.okp.index') }}" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
@@ -221,11 +221,11 @@
     <div class="bg-white rounded-xl border border-slate-200 shadow-2xs overflow-hidden">
         <div class="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-                <h2 class="font-bold text-sm text-slate-900">Active Youth Aspiration Ticket</h2>
-                <p class="text-[11px] text-slate-400">Pengelolaan tiket aspirasi kepemudaan, tindak lanjut, dan respon resmi</p>
+                <h2 class="font-bold text-sm text-slate-900">{{ __('messages.admin.active_tickets') }}</h2>
+                <p class="text-[11px] text-slate-400">{{ __('messages.admin.active_tickets_sub') }}</p>
             </div>
             <a href="{{ route('admin.aspirasi.index') }}" class="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
-                Buka Ticket Manager
+                {{ __('messages.admin.open_ticket_manager') }}
             </a>
         </div>
 

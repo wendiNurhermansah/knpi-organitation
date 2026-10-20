@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title ?? 'Paper Admin' }} | KNPI Digital Ecosystem</title>
+    <title>{{ $title ?? __('messages.admin.dashboard') }} | {{ __('messages.admin.admin_portal') }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/knpi-logo.png') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
@@ -81,18 +81,18 @@
             <!-- Navigation Links -->
             <div class="px-4 py-5 space-y-1">
                 <div class="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    Menu Utama
+                    {{ __('messages.admin.main_menu') }}
                 </div>
 
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('admin.dashboard') ? 'bg-royal-50 text-royal-800' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <i data-lucide="layout-grid" class="w-4 h-4 {{ request()->routeIs('admin.dashboard') ? 'text-royal-800' : 'text-slate-400' }}"></i>
-                    Dashboard
+                    {{ __('messages.admin.dashboard') }}
                 </a>
 
                 <a href="{{ route('admin.okp.index') }}" class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('admin.okp.*') ? 'bg-royal-50 text-royal-800' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <div class="flex items-center gap-3">
                         <i data-lucide="building-2" class="w-4 h-4 {{ request()->routeIs('admin.okp.*') ? 'text-royal-800' : 'text-slate-400' }}"></i>
-                        Direktori OKP
+                        {{ __('messages.admin.okp_dir') }}
                     </div>
                     @php
                         $pendingOkpCount = \App\Models\Organization::where('status', 'pending')->count();
@@ -107,7 +107,7 @@
                 <a href="{{ route('admin.aspirasi.index') }}" class="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('admin.aspirasi.*') ? 'bg-royal-50 text-royal-800' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <div class="flex items-center gap-3">
                         <i data-lucide="ticket" class="w-4 h-4 {{ request()->routeIs('admin.aspirasi.*') ? 'text-royal-800' : 'text-slate-400' }}"></i>
-                        e-Aspirasi Tiket
+                        {{ __('messages.admin.tickets') }}
                     </div>
                     @php
                         $pendingTicketCount = \App\Models\Aspiration::where('status', 'submitted')->count();
@@ -120,27 +120,27 @@
                 </a>
 
                 <div class="pt-4 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    Publikasi & Agenda
+                    {{ __('messages.admin.publication_agenda') }}
                 </div>
 
                 <a href="{{ route('admin.berita.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('admin.berita.*') ? 'bg-royal-50 text-royal-800' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <i data-lucide="newspaper" class="w-4 h-4 {{ request()->routeIs('admin.berita.*') ? 'text-royal-800' : 'text-slate-400' }}"></i>
-                    Berita Pemuda
+                    {{ __('messages.admin.news') }}
                 </a>
 
                 <a href="{{ route('admin.agenda.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition {{ request()->routeIs('admin.agenda.*') ? 'bg-royal-50 text-royal-800' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <i data-lucide="calendar" class="w-4 h-4 {{ request()->routeIs('admin.agenda.*') ? 'text-royal-800' : 'text-slate-400' }}"></i>
-                    Agenda & Kegiatan
+                    {{ __('messages.admin.events') }}
                 </a>
 
                 <div class="pt-4 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                    Sistem & Tautan
+                    {{ __('messages.admin.system_links') }}
                 </div>
 
                 <a href="{{ route('home') }}" target="_blank" class="flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-slate-500 hover:text-royal-800 hover:bg-slate-50 transition">
                     <span class="flex items-center gap-2">
                         <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                        Kunjungi Portal Publik
+                        {{ __('messages.admin.visit_portal') }}
                     </span>
                     <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                 </a>
@@ -164,7 +164,7 @@
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="p-2 text-slate-400 hover:text-red-600 hover:bg-white rounded-lg transition" title="Logout">
+                    <button type="submit" class="p-2 text-slate-400 hover:text-red-600 hover:bg-white rounded-lg transition" title="{{ __('messages.admin.logout') }}">
                         <i data-lucide="log-out" class="w-4 h-4"></i>
                     </button>
                 </form>
@@ -186,12 +186,22 @@
                 <!-- Search Input Bar -->
                 <div class="relative w-64 md:w-80">
                     <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                    <input type="text" placeholder="Cari data OKP, tiket, artikel..." class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-royal-800 focus:ring-1 focus:ring-royal-800 transition">
+                    <input type="text" placeholder="{{ __('messages.admin.search_placeholder') }}" class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-royal-800 focus:ring-1 focus:ring-royal-800 transition">
                 </div>
             </div>
 
             <!-- Topbar Right Actions -->
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <!-- Language Switcher Pill (Admin) -->
+                <div class="inline-flex items-center rounded-lg bg-slate-100 p-0.5 border border-slate-200 text-xs">
+                    <a href="{{ route('locale.switch', 'id') }}" class="px-2 py-1 rounded text-xs font-bold transition flex items-center gap-1 {{ app()->getLocale() === 'id' ? 'bg-white text-royal-800 shadow-xs border border-slate-200/60' : 'text-slate-500 hover:text-slate-900' }}" title="Bahasa Indonesia">
+                        <span>🇮🇩</span> <span class="hidden sm:inline font-mono">ID</span>
+                    </a>
+                    <a href="{{ route('locale.switch', 'en') }}" class="px-2 py-1 rounded text-xs font-bold transition flex items-center gap-1 {{ app()->getLocale() === 'en' ? 'bg-white text-royal-800 shadow-xs border border-slate-200/60' : 'text-slate-500 hover:text-slate-900' }}" title="English">
+                        <span>🇬🇧</span> <span class="hidden sm:inline font-mono">EN</span>
+                    </a>
+                </div>
+
                 <!-- Notifications Bell -->
                 <div class="relative" x-data="{ open: false }">
                     <button @click="open = !open" class="relative p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition">
@@ -249,7 +259,7 @@
 
         <!-- Minimal Paper Footer -->
         <footer class="px-6 py-4 border-t border-slate-200 text-slate-400 text-xs flex flex-col sm:flex-row justify-between items-center gap-2">
-            <span>KNPI Digital Ecosystem • Paper Admin Minimalist</span>
+            <span>KNPI Digital Ecosystem • {{ __('messages.admin.admin_portal') }}</span>
             <span>Laravel 11.x • MySQL 8.0 • Tailwind CSS</span>
         </footer>
     </div>

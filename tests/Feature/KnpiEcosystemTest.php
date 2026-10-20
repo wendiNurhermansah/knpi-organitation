@@ -131,10 +131,49 @@ class KnpiEcosystemTest extends TestCase
         $user = User::where('role', 'super_admin')->first();
         $this->actingAs($user);
 
+        // Default Indonesian
         $adminResponse = $this->get('/admin/dashboard');
         $adminResponse->assertStatus(200);
-        $adminResponse->assertSee('Recent OKP Verification');
-        $adminResponse->assertSee('Active Youth Aspiration Ticket');
+        $adminResponse->assertSee('Verifikasi OKP Terkini');
+        $adminResponse->assertSee('Tiket Aspirasi Aktif');
+
+        // English switch
+        $adminEnResponse = $this->withSession(['locale' => 'en'])->get('/admin/dashboard');
+        $adminEnResponse->assertStatus(200);
+        $adminEnResponse->assertSee('Recent OKP Verification');
+        $adminEnResponse->assertSee('Active Youth Aspiration Tickets');
+    }
+
+    /**
+     * Test language switcher route and session persistence.
+     */
+    public function test_language_switcher_route_and_switching(): void
+    {
+        // Switch to English
+        $switchResponse = $this->get('/lang/en');
+        $switchResponse->assertSessionHas('locale', 'en');
+
+        // Verify English content on home page
+        $enPage = $this->withSession(['locale' => 'en'])->get('/');
+        $enPage->assertStatus(200);
+        $enPage->assertSee('Youth Synergy');
+        $enPage->assertSee('Building the Nation');
+        $enPage->assertSee('Featured Youth News');
+        $enPage->assertSee('Registered OKP Directory');
+        $enPage->assertSee('Upcoming Youth Events');
+
+        // Switch back to Indonesian
+        $switchId = $this->get('/lang/id');
+        $switchId->assertSessionHas('locale', 'id');
+
+        // Verify Indonesian content on home page
+        $idPage = $this->withSession(['locale' => 'id'])->get('/');
+        $idPage->assertStatus(200);
+        $idPage->assertSee('Sinergi Pemuda');
+        $idPage->assertSee('Membangun Bangsa');
+        $idPage->assertSee('Warta Pemuda Pilihan');
+        $idPage->assertSee('Direktori OKP Terdaftar');
+        $idPage->assertSee('Agenda Pemuda Mendatang');
     }
 
     /**

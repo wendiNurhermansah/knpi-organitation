@@ -11,7 +11,8 @@
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-v3%2Fv4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind"></a>
   <a href="https://alpinejs.dev"><img src="https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpinedotjs&logoColor=white" alt="Alpine"></a>
   <a href="https://mysql.com"><img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"></a>
-  <a href="#-pengujian-otomatis-test-suite"><img src="https://img.shields.io/badge/Tests-12%20Passed%20(49%20assertions)-emerald?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests"></a>
+  <a href="#-pengujian-otomatis-test-suite"><img src="https://img.shields.io/badge/Tests-15%20Passed%20(68%20assertions)-emerald?style=for-the-badge&logo=githubactions&logoColor=white" alt="Tests"></a>
+  <a href="#-fitur-multi-bahasa-bilingual-support"><img src="https://img.shields.io/badge/Language-ID%20%7C%20EN-blue?style=for-the-badge&logo=google-translate&logoColor=white" alt="Bilingual"></a>
 </p>
 
 > **"Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas"**  
@@ -21,9 +22,10 @@
 
 ## 📌 Daftar Isi
 1. [Tentang Platform](#-tentang-platform)
-2. [Spesifikasi Desain & Palet Warna](#-spesifikasi-desain--palet-warna)
-3. [Arsitektur Database & Relasi ERD](#-arsitektur-database--relasi-erd)
-4. [Struktur Fitur Utama](#-struktur-fitur-utama)
+2. [Fitur Multi-Bahasa (Bilingual Support)](#-fitur-multi-bahasa-bilingual-support)
+3. [Spesifikasi Desain & Palet Warna](#-spesifikasi-desain--palet-warna)
+4. [Arsitektur Database & Relasi ERD](#-arsitektur-database--relasi-erd)
+5. [Struktur Fitur Utama](#-struktur-fitur-utama)
    - [Portal Publik (Public Civic Portal)](#1-portal-publik-public-civic-portal)
    - [Paper Admin Dashboard](#2-paper-admin-dashboard)
 5. [Daftar Rute & Endpoint (Routes Map)](#-daftar-rute--endpoint-routes-map)
@@ -39,6 +41,19 @@
 - Memfasilitasi pendaftaran dan verifikasi status legalitas SK (Kemenkumham/DPD) bagi seluruh Organisasi Kemasyarakatan Pemuda (OKP) di Indonesia.
 - Menyediakan kanal **e-Aspirasi** publik dengan penomoran kode tiket unik bertaraf resmi (`KNPI-YYYYMM-XXXX`) serta pelacakan disposisi secara transparan.
 - Mempublikasikan warta kepemudaan, siaran pers resmi, dan kalender kegiatan/agenda forum dialog nasional dengan kuota peserta mandiri.
+
+---
+
+## 🌐 Fitur Multi-Bahasa (Bilingual Support: ID & EN)
+
+Platform dilengkapi sistem pergantian bahasa instan (ID 🇮🇩 / EN 🇬🇧) yang profesional dan terstandarisasi untuk kenyamanan audiens nasional maupun mitra internasional:
+- **Default Locale**: Bahasa Indonesia (`id`) dengan terminologi resmi kepemudaan dan tata kelola kenegaraan.
+- **English Locale**: Bahasa Inggris (`en`) berstandar diplomatik sipil tanpa pencampuran bahasa (zero mixed language).
+- **Session-Based Persistence**: Menggunakan middleware `App\Http\Middleware\SetLocale` yang menyimpan preferensi bahasa di session dan menerapkan `App::setLocale()`.
+- **UI Switcher Component**:
+  - **Portal Publik**: Tersedia pada Topbar Civic Header & Navbar seluler (toggle pill `ID` / `EN`).
+  - **Paper Admin**: Tersedia pada Header Topbar berdampingan dengan notifikasi.
+- **Rute Pergantian**: `GET /lang/{locale}` (`id` atau `en`) yang langsung kembali ke halaman sebelumnya secara mulus (`redirect()->back()`).
 
 ---
 
@@ -204,6 +219,12 @@ php artisan test --filter=KnpiEcosystemTest
 
 **Hasil Pengujian:**
 ```text
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
+
+   PASS  Tests\Feature\ExampleTest
+  ✓ the application returns a successful response
+
    PASS  Tests\Feature\KnpiEcosystemTest
   ✓ landing page renders with hero and metrics
   ✓ public articles index and show
@@ -211,6 +232,7 @@ php artisan test --filter=KnpiEcosystemTest
   ✓ agenda listing and registration
   ✓ aspiration submission generates ticket and tracks
   ✓ admin dashboard requires auth and renders metrics
+  ✓ language switcher route and switching
   ✓ admin can verify okp
   ✓ admin can update aspiration ticket
   ✓ login page renders with modern design and captcha
@@ -218,8 +240,8 @@ php artisan test --filter=KnpiEcosystemTest
   ✓ login succeeds with valid captcha
   ✓ captcha refresh endpoint
 
-  Tests:    12 passed (49 assertions)
-  Duration: 4.10s
+  Tests:    15 passed (68 assertions)
+  Duration: 1.70s
 ```
 
 ---

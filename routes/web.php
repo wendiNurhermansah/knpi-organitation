@@ -32,6 +32,9 @@ Route::post('/agenda/{event}/register', [EventRegistrationController::class, 'st
 Route::post('/aspirasi', [AspirationController::class, 'store'])->name('aspirasi.store');
 Route::get('/aspirasi/lacak', [AspirationController::class, 'track'])->name('aspirasi.track');
 
+// Language Switcher Route (ID / EN)
+Route::get('/lang/{locale}', [\App\Http\Controllers\LocaleController::class, 'switch'])->name('locale.switch');
+
 // Authentication & Security Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
