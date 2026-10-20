@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // 3. Seed 5 Dummy OKP Records (Mix of verified and pending)
+        // 3. Seed Registered OKP Directory (10 National Youth Organizations)
         $okps = [
             [
                 'name' => 'Pemuda Pancasila',
@@ -119,6 +119,39 @@ class DatabaseSeeder extends Seeder
                 'status' => 'verified',
             ],
             [
+                'name' => 'Gerakan Mahasiswa Nasional Indonesia (GMNI)',
+                'slug' => 'gmni',
+                'leader_name' => 'Imanuel Cahyadi',
+                'email' => 'dpp@gmni.or.id',
+                'phone' => '081234567806',
+                'sk_number' => 'AHU-0001928.AH.01.07.TAHUN.2024',
+                'period_start' => '2024-05-01',
+                'period_end' => '2027-05-01',
+                'status' => 'verified',
+            ],
+            [
+                'name' => 'Himpunan Mahasiswa Islam (HMI)',
+                'slug' => 'hmi',
+                'leader_name' => 'Bagis Pratama',
+                'email' => 'pbhmi@hmi.or.id',
+                'phone' => '081234567807',
+                'sk_number' => 'AHU-0004921.AH.01.07.TAHUN.2024',
+                'period_start' => '2024-01-10',
+                'period_end' => '2026-12-31',
+                'status' => 'verified',
+            ],
+            [
+                'name' => 'Pergerakan Mahasiswa Islam Indonesia (PMII)',
+                'slug' => 'pmii',
+                'leader_name' => 'M. Shofiyullah Cokro',
+                'email' => 'pb@pmii.id',
+                'phone' => '081234567808',
+                'sk_number' => 'AHU-0007812.AH.01.07.TAHUN.2024',
+                'period_start' => '2024-08-01',
+                'period_end' => '2027-08-01',
+                'status' => 'verified',
+            ],
+            [
                 'name' => 'Angkatan Muda Pembaharuan Indonesia (AMPI)',
                 'slug' => 'ampi',
                 'leader_name' => 'Jerry Sambuaga',
@@ -140,6 +173,28 @@ class DatabaseSeeder extends Seeder
                 'period_end' => '2029-06-01',
                 'status' => 'pending',
             ],
+            [
+                'name' => 'Ikatan Mahasiswa Muhammadiyah (IMM)',
+                'slug' => 'imm',
+                'leader_name' => 'Riyan Betra Delza',
+                'email' => 'dpp@imm.or.id',
+                'phone' => '081234567809',
+                'sk_number' => 'AHU-0005234.AH.01.07.TAHUN.2024',
+                'period_start' => '2024-03-01',
+                'period_end' => '2026-03-01',
+                'status' => 'verified',
+            ],
+            [
+                'name' => 'Kesatuan Aksi Mahasiswa Muslim Indonesia (KAMMI)',
+                'slug' => 'kammi',
+                'leader_name' => 'Ahmad Jundi Muzakki',
+                'email' => 'pengurus@kammi.id',
+                'phone' => '081234567810',
+                'sk_number' => 'SK-DPD-KNPI/XI/2026-045',
+                'period_start' => '2026-02-01',
+                'period_end' => '2028-02-01',
+                'status' => 'pending',
+            ],
         ];
 
         foreach ($okps as $okpData) {
@@ -149,7 +204,7 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // 4. Seed Articles (News Matching UI Wireframe)
+        // 4. Seed Featured Youth News (Articles Matching UI Wireframe)
         $articles = [
             [
                 'title' => 'Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas 2045',
@@ -184,6 +239,28 @@ class DatabaseSeeder extends Seeder
                 'views_count' => 670,
                 'published_at' => now()->subDays(6),
             ],
+            [
+                'title' => 'DPP KNPI Luncurkan Sentra Inkubasi Start-Up Pemuda Daerah',
+                'slug' => 'dpp-knpi-luncurkan-sentra-inkubasi-start-up-pemuda-daerah',
+                'category_id' => $categories['wirausaha']->id,
+                'user_id' => $adminHumas->id,
+                'summary' => 'Program pendampingan dan modal hibah bagi 100 inisiator bisnis rintisan pemuda di 38 provinsi diresmikan oleh pimpinan DPP KNPI.',
+                'content' => '<p>Kemandirian ekonomi generasi muda menjadi fokus fundamental. Dengan dibukanya sentra inkubasi ini, pengusaha muda mendapatkan bimbingan mentor dan akses pendanaan ventura.</p>',
+                'status' => 'published',
+                'views_count' => 1120,
+                'published_at' => now()->subDays(8),
+            ],
+            [
+                'title' => 'Dialog Kebangsaan: Memperkokoh Toleransi & Karakter Pemuda',
+                'slug' => 'dialog-kebangsaan-memperkokoh-toleransi-karakter-pemuda',
+                'category_id' => $categories['sosial-budaya']->id,
+                'user_id' => $adminHumas->id,
+                'summary' => 'Menghadirkan tokoh lintas agama dan budayawan, KNPI mengukuhkan komitmen pemuda sebagai garda terdepan penjaga keutuhan NKRI.',
+                'content' => '<p>Keberagaman suku, ras, dan agama adalah kekayaan bangsa yang harus dirawat oleh generasi penerus. Forum ini menghasilkan deklarasi pemuda damai menyongsong agenda kebangsaan 2026-2029.</p>',
+                'status' => 'published',
+                'views_count' => 930,
+                'published_at' => now()->subDays(10),
+            ],
         ];
 
         foreach ($articles as $art) {
@@ -193,12 +270,12 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // 5. Seed Events / Agenda
+        // 5. Seed Upcoming Youth Events (Scheduled in the near future)
         $events = [
             [
                 'title' => 'Rapat Pimpinan Nasional (RAPIMNAS) Pemuda Indonesia 2026',
                 'slug' => 'rapimnas-pemuda-indonesia-2026',
-                'description' => 'Musyawarah koordinasi pimpinan organisasi kepemudaan nasional untuk menyelaraskan cetak biru gerakan kepemudaan dan strategi kemitraan pembangunan.',
+                'description' => 'Musyawarah koordinasi pimpinan organisasi kepemudaan nasional untuk menyelaraskan cetak biru gerakan kepemudaan dan strategi kemitraan pembangunan nasional.',
                 'location' => 'Grand Ballroom Hotel Indonesia Kempinski, Jakarta Pusat',
                 'start_time' => now()->addDays(5)->setHour(9)->setMinute(0),
                 'end_time' => now()->addDays(7)->setHour(17)->setMinute(0),
@@ -215,6 +292,26 @@ class DatabaseSeeder extends Seeder
                 'quota' => 150,
                 'is_open_registration' => true,
             ],
+            [
+                'title' => 'Festival Wirausaha Kreatif Pemuda Nusantara 2026',
+                'slug' => 'festival-wirausaha-kreatif-pemuda-nusantara-2026',
+                'description' => 'Eksibisi produk inovasi wirausaha muda, temu investor, serta bazaar UMKM binaan DPD KNPI se-Indonesia.',
+                'location' => 'Plaza Selatan Gelora Bung Karno (GBK), Senayan, Jakarta',
+                'start_time' => now()->addDays(18)->setHour(10)->setMinute(0),
+                'end_time' => now()->addDays(20)->setHour(21)->setMinute(0),
+                'quota' => 500,
+                'is_open_registration' => true,
+            ],
+            [
+                'title' => 'Forum Dialog Ketenagakerjaan & Sertifikasi Vokasi',
+                'slug' => 'forum-dialog-ketenagakerjaan-sertifikasi-vokasi',
+                'description' => 'Konsultasi publik bersama Kementerian Ketenagakerjaan dan BNSP untuk akselerasi sertifikasi gratis bagi lulusan baru.',
+                'location' => 'Gedung Vokasi Kemenaker, Jl. Gatot Subroto, Jakarta Selatan',
+                'start_time' => now()->addDays(25)->setHour(9)->setMinute(0),
+                'end_time' => now()->addDays(25)->setHour(15)->setMinute(30),
+                'quota' => 200,
+                'is_open_registration' => true,
+            ],
         ];
 
         foreach ($events as $ev) {
@@ -224,7 +321,7 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // 6. Seed Dummy Aspirations
+        // 6. Seed Youth Aspirations
         $aspirations = [
             [
                 'ticket_code' => 'KNPI-202610-A91B',
