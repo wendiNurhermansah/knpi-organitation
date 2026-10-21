@@ -293,4 +293,47 @@ class KnpiEcosystemTest extends TestCase
         $response->assertJsonStructure(['question']);
         $this->assertNotNull(session('captcha_answer'));
     }
+
+    /**
+     * Test public profile pages render correctly with expected content.
+     */
+    public function test_public_profile_sejarah_renders(): void
+    {
+        $response = $this->get('/profil/sejarah');
+
+        $response->assertStatus(200);
+        $response->assertSee('Sejarah Kepemudaan Nasional');
+        $response->assertSee('23 Juli 1973');
+        $response->assertSee('David Napitupulu');
+    }
+
+    public function test_public_profile_visi_misi_renders(): void
+    {
+        $response = $this->get('/profil/visi-misi');
+
+        $response->assertStatus(200);
+        $response->assertSee('Cita-Cita Organisasi');
+        $response->assertSee('Visi Utama DPP KNPI');
+        $response->assertSee('Panca Krida Pemuda');
+        $response->assertSee('Indonesia Emas 2045');
+    }
+
+    public function test_public_profile_ad_art_renders(): void
+    {
+        $response = $this->get('/profil/ad-art');
+
+        $response->assertStatus(200);
+        $response->assertSee('Konstitusi Organisasi');
+        $response->assertSee('AHU-0000192.AH.01.08.TAHUN 2022');
+        $response->assertSee('Anggaran Dasar');
+    }
+
+    public function test_public_profile_pengurus_renders(): void
+    {
+        $response = $this->get('/profil/pengurus');
+
+        $response->assertStatus(200);
+        $response->assertSee('Dewan Pengurus Pusat');
+        $response->assertSee('Pimpinan Harian Inti');
+    }
 }

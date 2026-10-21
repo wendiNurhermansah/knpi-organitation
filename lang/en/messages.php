@@ -12,6 +12,11 @@ return [
     // Navigation
     'nav' => [
         'home' => 'Home',
+        'profile' => 'Profile',
+        'history' => 'History',
+        'vision_mission' => 'Vision & Mission',
+        'constitution' => 'Constitution & Bylaws',
+        'management' => 'Executive Board',
         'news' => 'Youth News',
         'okp' => 'OKP Directory',
         'agenda' => 'Youth Agendas',

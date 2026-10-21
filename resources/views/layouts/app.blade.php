@@ -121,22 +121,87 @@
 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden lg:flex items-center space-x-1">
-                    <a href="{{ route('home') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('home') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('home') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('home') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.home') }}
                     </a>
-                    <a href="{{ route('berita.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('berita.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+
+                    <!-- Profil Dropdown -->
+                    <div class="relative" x-data="{ open: false }" @click.outside="open = false" @keydown.escape="open = false">
+                        <button @click="open = !open" type="button" class="px-3 py-2 rounded-lg text-sm font-semibold transition inline-flex items-center gap-1.5 {{ request()->routeIs('profil.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                            <span>{{ __('messages.nav.profile') }}</span>
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''"></i>
+                        </button>
+
+                        <div 
+                            x-show="open" 
+                            x-cloak 
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="opacity-0 translate-y-1 scale-95"
+                            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                            x-transition:leave="transition ease-in duration-100"
+                            x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                            x-transition:leave-end="opacity-0 translate-y-1 scale-95"
+                            class="absolute left-0 mt-2 w-60 rounded-xl bg-white border border-slate-200 shadow-xl py-2 z-50 divide-y divide-slate-100 text-xs"
+                        >
+                            <div class="py-1">
+                                <a href="{{ route('profil.sejarah') }}" class="flex items-center gap-2.5 px-3.5 py-2 hover:bg-blue-50/80 transition {{ request()->routeIs('profil.sejarah') ? 'text-royal-800 font-bold bg-blue-50' : 'text-slate-700' }}">
+                                    <div class="w-7 h-7 rounded-lg bg-royal-50 text-royal-800 flex items-center justify-center shrink-0">
+                                        <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800">{{ __('messages.nav.history') }}</div>
+                                        <div class="text-[10px] text-slate-400">Deklarasi Pemuda 1973</div>
+                                    </div>
+                                </a>
+
+                                <a href="{{ route('profil.visi-misi') }}" class="flex items-center gap-2.5 px-3.5 py-2 hover:bg-blue-50/80 transition {{ request()->routeIs('profil.visi-misi') ? 'text-royal-800 font-bold bg-blue-50' : 'text-slate-700' }}">
+                                    <div class="w-7 h-7 rounded-lg bg-amber-50 text-gold-600 flex items-center justify-center shrink-0">
+                                        <i data-lucide="target" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800">{{ __('messages.nav.vision_mission') }}</div>
+                                        <div class="text-[10px] text-slate-400">Arah Gerak & Panca Krida</div>
+                                    </div>
+                                </a>
+
+                                <a href="{{ route('profil.ad-art') }}" class="flex items-center gap-2.5 px-3.5 py-2 hover:bg-blue-50/80 transition {{ request()->routeIs('profil.ad-art') ? 'text-royal-800 font-bold bg-blue-50' : 'text-slate-700' }}">
+                                    <div class="w-7 h-7 rounded-lg bg-blue-50 text-royal-800 flex items-center justify-center shrink-0">
+                                        <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800">{{ __('messages.nav.constitution') }}</div>
+                                        <div class="text-[10px] text-slate-400">Pedoman & Konstitusi</div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="pt-1">
+                                <a href="{{ route('profil.pengurus') }}" class="flex items-center gap-2.5 px-3.5 py-2 hover:bg-blue-50/80 transition {{ request()->routeIs('profil.pengurus') ? 'text-royal-800 font-bold bg-blue-50' : 'text-slate-700' }}">
+                                    <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                                        <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-slate-800">{{ __('messages.nav.management') }}</div>
+                                        <div class="text-[10px] text-slate-400">Dewan Pengurus Pusat</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('berita.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('berita.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.news') }}
                     </a>
-                    <a href="{{ route('okp.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('okp.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('okp.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('okp.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.okp') }}
                     </a>
-                    <a href="{{ route('agenda.index') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('agenda.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('agenda.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('agenda.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.agenda') }}
                     </a>
-                    <a href="{{ route('home') }}#aspirasi" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
+                    <a href="{{ route('home') }}#aspirasi" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
                         {{ __('messages.nav.aspiration') }}
                     </a>
-                    <a href="{{ route('aspirasi.track') }}" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
+                    <a href="{{ route('aspirasi.track') }}" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
                         {{ __('messages.nav.track') }}
                     </a>
                 </div>
@@ -190,6 +255,29 @@
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
                 {{ __('messages.nav.home') }}
             </a>
+
+            <!-- Mobile Profil Accordion -->
+            <div x-data="{ profileAccordion: {{ request()->routeIs('profil.*') ? 'true' : 'false' }} }">
+                <button @click="profileAccordion = !profileAccordion" type="button" class="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
+                    <span>{{ __('messages.nav.profile') }}</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200" :class="profileAccordion ? 'rotate-180' : ''"></i>
+                </button>
+                <div x-show="profileAccordion" x-cloak class="pl-4 pr-2 py-1 space-y-1 bg-slate-50 rounded-lg ml-2 border-l-2 border-royal-700">
+                    <a href="{{ route('profil.sejarah') }}" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:text-royal-800 {{ request()->routeIs('profil.sejarah') ? 'text-royal-800 font-bold' : '' }}">
+                        {{ __('messages.nav.history') }}
+                    </a>
+                    <a href="{{ route('profil.visi-misi') }}" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:text-royal-800 {{ request()->routeIs('profil.visi-misi') ? 'text-royal-800 font-bold' : '' }}">
+                        {{ __('messages.nav.vision_mission') }}
+                    </a>
+                    <a href="{{ route('profil.ad-art') }}" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:text-royal-800 {{ request()->routeIs('profil.ad-art') ? 'text-royal-800 font-bold' : '' }}">
+                        {{ __('messages.nav.constitution') }}
+                    </a>
+                    <a href="{{ route('profil.pengurus') }}" class="block px-3 py-2 text-sm font-medium text-slate-700 hover:text-royal-800 {{ request()->routeIs('profil.pengurus') ? 'text-royal-800 font-bold' : '' }}">
+                        {{ __('messages.nav.management') }}
+                    </a>
+                </div>
+            </div>
+
             <a href="{{ route('berita.index') }}" class="block px-3 py-2 rounded-md text-base font-semibold text-slate-800 hover:bg-blue-50 hover:text-royal-800">
                 {{ __('messages.nav.news') }}
             </a>
@@ -302,8 +390,12 @@
                     <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-500 pl-2">
                         {{ __('messages.footer.nav_title') }}
                     </h3>
-                    <ul class="space-y-2.5 text-sm">
+                    <ul class="space-y-2 text-sm">
                         <li><a href="{{ route('home') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.home') }}</a></li>
+                        <li><a href="{{ route('profil.sejarah') }}" class="hover:text-gold-400 transition">{{ __('messages.nav.profile') }} - {{ __('messages.nav.history') }}</a></li>
+                        <li><a href="{{ route('profil.visi-misi') }}" class="hover:text-gold-400 transition">{{ __('messages.nav.vision_mission') }}</a></li>
+                        <li><a href="{{ route('profil.ad-art') }}" class="hover:text-gold-400 transition">{{ __('messages.nav.constitution') }}</a></li>
+                        <li><a href="{{ route('profil.pengurus') }}" class="hover:text-gold-400 transition">{{ __('messages.nav.management') }}</a></li>
                         <li><a href="{{ route('berita.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.news') }}</a></li>
                         <li><a href="{{ route('okp.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.okp') }}</a></li>
                         <li><a href="{{ route('agenda.index') }}" class="hover:text-gold-400 transition">{{ __('messages.footer.agenda') }}</a></li>

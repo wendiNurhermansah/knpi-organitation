@@ -405,23 +405,65 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ],
             [
-                'name' => 'Sekretaris Jenderal DPP KNPI',
+                'name' => 'Gandung Rafii Nurul Huda',
                 'position' => 'Sekretaris Jenderal',
-                'department' => 'Dewan Pengurus Pusat',
+                'department' => 'Kesekretariatan Jenderal',
                 'sort_order' => 2,
                 'is_active' => true,
             ],
             [
-                'name' => 'Bendahara Umum DPP KNPI',
+                'name' => 'Pamriadi',
                 'position' => 'Bendahara Umum',
-                'department' => 'Dewan Pengurus Pusat',
+                'department' => 'Kebendaharaan Umum',
                 'sort_order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Ahmad Riduan Pasaribu',
+                'position' => 'Ketua Bidang Organisasi & Keanggotaan',
+                'department' => 'Bidang Organisasi, Kaderisasi & Keanggotaan',
+                'sort_order' => 4,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Choir Syarifuddin',
+                'position' => 'Ketua Bidang Hubungan Antar Lembaga & OKP',
+                'department' => 'Bidang Hubungan OKP & Ormas',
+                'sort_order' => 5,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Ilham Permana',
+                'position' => 'Ketua Bidang Ketenagakerjaan & Vokasi',
+                'department' => 'Bidang Ketenagakerjaan & Pengembangan Vokasi',
+                'sort_order' => 6,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Devita Rusdi',
+                'position' => 'Ketua Bidang Ekonomi Kreatif & UMKM',
+                'department' => 'Bidang Kewirausahaan & Ekonomi Kreatif',
+                'sort_order' => 7,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Fahd El Fouz A. Rafiq',
+                'position' => 'Ketua Bidang Hukum, HAM & Kebijakan Publik',
+                'department' => 'Bidang Hukum & Advokasi Hak Sipil Pemuda',
+                'sort_order' => 8,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Dian Assafri Nasa\'i',
+                'position' => 'Ketua Bidang Hubungan Internasional',
+                'department' => 'Bidang Hubungan Luar Negeri & Diplomasi Pemuda',
+                'sort_order' => 9,
                 'is_active' => true,
             ],
         ];
 
         foreach ($officials as $off) {
-            Official::firstOrCreate(
+            Official::updateOrCreate(
                 ['name' => $off['name']],
                 $off
             );

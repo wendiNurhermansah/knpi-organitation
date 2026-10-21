@@ -32,6 +32,14 @@ Route::post('/agenda/{event}/register', [EventRegistrationController::class, 'st
 Route::post('/aspirasi', [AspirationController::class, 'store'])->name('aspirasi.store');
 Route::get('/aspirasi/lacak', [AspirationController::class, 'track'])->name('aspirasi.track');
 
+// Profile Routes (Dropdown: Sejarah, Visi & Misi, AD/ART, Pengurus)
+Route::prefix('profil')->name('profil.')->group(function () {
+    Route::get('/sejarah', [\App\Http\Controllers\ProfileController::class, 'sejarah'])->name('sejarah');
+    Route::get('/visi-misi', [\App\Http\Controllers\ProfileController::class, 'visiMisi'])->name('visi-misi');
+    Route::get('/ad-art', [\App\Http\Controllers\ProfileController::class, 'adArt'])->name('ad-art');
+    Route::get('/pengurus', [\App\Http\Controllers\ProfileController::class, 'pengurus'])->name('pengurus');
+});
+
 // Language Switcher Route (ID / EN)
 Route::get('/lang/{locale}', [\App\Http\Controllers\LocaleController::class, 'switch'])->name('locale.switch');
 

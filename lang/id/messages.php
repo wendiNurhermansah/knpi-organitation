@@ -12,6 +12,11 @@ return [
     // Navigation
     'nav' => [
         'home' => 'Beranda',
+        'profile' => 'Profil',
+        'history' => 'Sejarah',
+        'vision_mission' => 'Visi & Misi',
+        'constitution' => 'AD / ART',
+        'management' => 'Pengurus',
         'news' => 'Warta Pemuda',
         'okp' => 'Direktori OKP',
         'agenda' => 'Agenda & Kegiatan',
