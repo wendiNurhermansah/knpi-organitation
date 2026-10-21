@@ -7,14 +7,14 @@
         <div class="absolute inset-0 hero-pattern opacity-30"></div>
         
         <!-- Gold Angular Accent Slice (Matches UI Mockup) -->
-        <div class="absolute right-0 top-0 bottom-0 w-1/4 lg:w-[30%] xl:w-[32%] bg-gold-500 [clip-path:polygon(35%_0,100%_0,100%_100%,0_100%)] pointer-events-none hidden md:block"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-1/3 lg:w-[32%] xl:w-[35%] bg-gold-500 [clip-path:polygon(32%_0,100%_0,100%_100%,0_100%)] pointer-events-none hidden md:block"></div>
         <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-gold-500/20 blur-3xl pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16 pb-12 lg:pb-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-16 pb-0 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
                 
-                <!-- Left Hero Content (7 Cols) -->
-                <div class="lg:col-span-7 space-y-6 pb-4 lg:pb-8">
+                <!-- Left Hero Content (6 Cols) -->
+                <div class="lg:col-span-6 space-y-6 pb-10 lg:pb-16">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-royal-700/80 border border-blue-400/30 text-blue-200 text-xs font-semibold tracking-wide shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
                         {{ __('messages.hero.badge') }}
@@ -26,7 +26,7 @@
                         <span class="text-gold-400">{{ __('messages.hero.title_3') }}</span>
                     </h1>
 
-                    <p class="text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-2xl font-normal">
+                    <p class="text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-xl font-normal">
                         {{ __('messages.hero.desc') }}
                     </p>
 
@@ -54,17 +54,21 @@
                     </div>
                 </div>
 
-                <!-- Right Hero Banner Showcase (5 Cols - Seamless, No Box, Real Like Design Template) -->
-                <div class="lg:col-span-5 relative flex items-end justify-center lg:justify-end self-end">
-                    <img src="{{ asset('images/hero-youth-cutout.png') }}" alt="Sinergi Pemimpin Pemuda Indonesia KNPI" class="w-full max-w-lg lg:max-w-none h-auto object-contain object-bottom drop-shadow-2xl select-none pointer-events-none transform hover:scale-[1.02] transition-transform duration-500">
+                <!-- Right Hero Banner Showcase (6 Cols - Prominent, Large Size, Feet/Waist Hidden Behind Metric Cards) -->
+                <div class="lg:col-span-6 relative flex items-end justify-center lg:justify-end self-end">
+                    <div class="w-full flex justify-center lg:justify-end">
+                        <img src="{{ asset('images/hero-youth-cutout.png') }}" 
+                             alt="Sinergi Pemimpin Pemuda Indonesia KNPI" 
+                             class="w-full max-w-lg sm:max-w-xl lg:max-w-none lg:w-[125%] xl:w-[130%] h-auto object-contain object-bottom drop-shadow-2xl select-none pointer-events-none translate-y-6 sm:translate-y-8 lg:translate-y-12">
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- 2. 4-COLUMN QUICK METRIC STRIP -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+    <!-- 2. 4-COLUMN QUICK METRIC STRIP (Overlaps the bottom of the youth leaders) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 lg:-mt-12 relative z-20">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
             
             <!-- Metric 1: Quick Stats OKP -->
