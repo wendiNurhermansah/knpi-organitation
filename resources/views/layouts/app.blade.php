@@ -70,7 +70,7 @@
 
     <!-- 1. Topbar Civic Header with Multi-language Switcher -->
     <header class="bg-slate-900 text-slate-300 text-xs border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center space-x-3">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-royal-800 text-blue-200 border border-royal-700">
                     {{ __('messages.topbar.official_portal') }}
@@ -80,17 +80,17 @@
                 </span>
             </div>
             <div class="flex items-center space-x-4 sm:space-x-5 text-slate-400">
-                <span class="hidden sm:flex items-center gap-1.5">
+                <span class="hidden sm:flex items-center gap-1.5 whitespace-nowrap">
                     <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i>
                     {{ __('messages.topbar.location') }}
                 </span>
-                <a href="{{ route('aspirasi.track') }}" class="text-gold-400 hover:text-gold-300 font-medium transition flex items-center gap-1">
+                <a href="{{ route('aspirasi.track') }}" class="text-gold-400 hover:text-gold-300 font-medium transition flex items-center gap-1 whitespace-nowrap">
                     <i data-lucide="search" class="w-3.5 h-3.5"></i>
                     {{ __('messages.topbar.track_ticket') }}
                 </a>
 
                 <!-- Language Switcher Pill -->
-                <div class="inline-flex items-center rounded-md bg-slate-800 p-0.5 border border-slate-700">
+                <div class="inline-flex items-center rounded-md bg-slate-800 p-0.5 border border-slate-700 shrink-0">
                     <a href="{{ route('locale.switch', 'id') }}" class="px-2 py-0.5 rounded text-[11px] font-bold transition flex items-center gap-1 {{ app()->getLocale() === 'id' ? 'bg-royal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white' }}" title="Bahasa Indonesia">
                         <span>🇮🇩</span> <span class="font-mono">ID</span>
                     </a>
@@ -104,30 +104,30 @@
 
     <!-- 2. Modern Civic Navbar -->
     <nav x-data="{ mobileMenuOpen: false }" class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center gap-2 xl:gap-4">
                 <!-- Brand Logo -->
-                <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
-                    <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-12 h-12 object-contain group-hover:scale-105 transition-transform drop-shadow-sm">
+                <a href="{{ route('home') }}" class="flex items-center space-x-2.5 sm:space-x-3 group shrink-0">
+                    <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition-transform drop-shadow-sm">
                     <div>
-                        <div class="font-extrabold text-xl text-royal-800 tracking-tight leading-none group-hover:text-royal-900 transition flex items-center">
-                            KNPI <span class="text-gold-600 text-xs uppercase px-1.5 py-0.5 bg-gold-50 rounded border border-gold-200 ml-1.5 font-bold tracking-normal">Digital</span>
+                        <div class="font-extrabold text-lg sm:text-xl text-royal-800 tracking-tight leading-none group-hover:text-royal-900 transition flex items-center whitespace-nowrap">
+                            KNPI <span class="text-gold-600 text-[10px] sm:text-xs uppercase px-1.5 py-0.5 bg-gold-50 rounded border border-gold-200 ml-1.5 font-bold tracking-normal">Digital</span>
                         </div>
-                        <p class="text-[11px] text-slate-500 font-medium leading-tight mt-0.5">
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-tight mt-0.5 whitespace-nowrap">
                             Komite Nasional Pemuda Indonesia
                         </p>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <div class="hidden lg:flex items-center space-x-1">
-                    <a href="{{ route('home') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('home') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                <div class="hidden lg:flex items-center space-x-0.5 xl:space-x-1 shrink-0">
+                    <a href="{{ route('home') }}" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition {{ request()->routeIs('home') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.home') }}
                     </a>
 
                     <!-- Profil Dropdown -->
-                    <div class="relative" x-data="{ open: false }" @click.outside="open = false" @keydown.escape="open = false">
-                        <button @click="open = !open" type="button" class="px-3 py-2 rounded-lg text-sm font-semibold transition inline-flex items-center gap-1.5 {{ request()->routeIs('profil.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <div class="relative shrink-0" x-data="{ open: false }" @click.outside="open = false" @keydown.escape="open = false">
+                        <button @click="open = !open" type="button" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition inline-flex items-center gap-1 xl:gap-1.5 {{ request()->routeIs('profil.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                             <span>{{ __('messages.nav.profile') }}</span>
                             <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''"></i>
                         </button>
@@ -189,42 +189,42 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('berita.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('berita.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('berita.index') }}" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition {{ request()->routeIs('berita.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.news') }}
                     </a>
-                    <a href="{{ route('okp.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('okp.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('okp.index') }}" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition {{ request()->routeIs('okp.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.okp') }}
                     </a>
-                    <a href="{{ route('agenda.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold transition {{ request()->routeIs('agenda.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
+                    <a href="{{ route('agenda.index') }}" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap transition {{ request()->routeIs('agenda.*') ? 'text-royal-800 bg-blue-50' : 'text-slate-700 hover:text-royal-800 hover:bg-slate-50' }}">
                         {{ __('messages.nav.agenda') }}
                     </a>
-                    <a href="{{ route('home') }}#aspirasi" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
+                    <a href="{{ route('home') }}#aspirasi" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
                         {{ __('messages.nav.aspiration') }}
                     </a>
-                    <a href="{{ route('aspirasi.track') }}" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
+                    <a href="{{ route('aspirasi.track') }}" class="px-2 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap text-slate-700 hover:text-royal-800 hover:bg-slate-50 transition">
                         {{ __('messages.nav.track') }}
                     </a>
                 </div>
 
                 <!-- Right Action Buttons -->
-                <div class="hidden md:flex items-center space-x-3">
+                <div class="hidden md:flex items-center space-x-2 xl:space-x-3 shrink-0">
                     @auth
-                        <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-royal-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition shadow-xs">
+                        <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 xl:py-2.5 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap text-royal-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition shadow-xs">
                             <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
                             {{ __('messages.nav.dashboard') }}
                         </a>
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="p-2.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition" title="{{ __('messages.admin.logout') }}">
+                            <button type="submit" class="p-2 xl:p-2.5 rounded-lg text-slate-500 hover:text-red-600 hover:bg-red-50 transition" title="{{ __('messages.admin.logout') }}">
                                 <i data-lucide="log-out" class="w-4 h-4"></i>
                             </button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:text-royal-800 hover:bg-slate-100 transition">
+                        <a href="{{ route('login') }}" class="px-2.5 xl:px-4 py-2 xl:py-2.5 rounded-lg text-xs xl:text-sm font-semibold whitespace-nowrap text-slate-700 hover:text-royal-800 hover:bg-slate-100 transition">
                             {{ __('messages.nav.login') }}
                         </a>
-                        <a href="{{ route('home') }}#aspirasi" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold text-white bg-gold-500 hover:bg-gold-600 active:scale-95 transition shadow-sm shadow-gold-500/25">
-                            <i data-lucide="send" class="w-4 h-4"></i>
+                        <a href="{{ route('home') }}#aspirasi" class="inline-flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 xl:py-2.5 rounded-lg text-xs xl:text-sm font-bold whitespace-nowrap text-white bg-gold-500 hover:bg-gold-600 active:scale-95 transition shadow-sm shadow-gold-500/25">
+                            <i data-lucide="send" class="w-3.5 xl:w-4 h-3.5 xl:h-4"></i>
                             {{ __('messages.nav.send_aspiration') }}
                         </a>
                     @endauth
