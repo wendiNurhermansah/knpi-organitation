@@ -23,7 +23,7 @@
     </div>
 
     <!-- Status Filter Buttons -->
-    <div class="flex items-center gap-2 py-6">
+    <div class="flex flex-wrap items-center gap-2 py-6">
         <a href="{{ route('okp.index', ['status' => 'verified', 'q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition {{ $status === 'verified' ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">
             {{ __('messages.okp.verified') }} ({{ $stats['total_verified'] }})
         </a>

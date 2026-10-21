@@ -6,15 +6,15 @@
         <!-- Background Decorative Elements -->
         <div class="absolute inset-0 hero-pattern opacity-30"></div>
         
-        <!-- Gold Angular Accent Slice (Matches UI Mockup) -->
-        <div class="absolute right-0 top-0 bottom-0 w-1/3 lg:w-[32%] xl:w-[35%] bg-gold-500 [clip-path:polygon(32%_0,100%_0,100%_100%,0_100%)] pointer-events-none hidden md:block"></div>
+        <!-- Gold Angular Accent Slice (Matches UI Mockup on mobile & desktop) -->
+        <div class="absolute right-0 top-0 bottom-0 w-2/5 sm:w-1/3 lg:w-[32%] xl:w-[35%] bg-gold-500 [clip-path:polygon(32%_0,100%_0,100%_100%,0_100%)] pointer-events-none block"></div>
         <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-gold-500/20 blur-3xl pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-16 pb-0 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-14 lg:pt-16 pb-0 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end">
                 
                 <!-- Left Hero Content (6 Cols) -->
-                <div class="lg:col-span-6 space-y-6 pb-10 lg:pb-16">
+                <div class="lg:col-span-6 space-y-5 sm:space-y-6 pb-4 sm:pb-8 lg:pb-16">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-royal-700/80 border border-blue-400/30 text-blue-200 text-xs font-semibold tracking-wide shadow-xs">
                         <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
                         {{ __('messages.hero.badge') }}
@@ -42,7 +42,7 @@
                     </div>
 
                     <!-- Quick Trust Pill -->
-                    <div class="pt-4 flex items-center gap-6 text-xs text-blue-200/80 border-t border-blue-500/20">
+                    <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-blue-200/80 border-t border-blue-500/20">
                         <div class="flex items-center gap-2">
                             <i data-lucide="shield-check" class="w-4 h-4 text-gold-400"></i>
                             {{ __('messages.hero.verified_kemenkumham') }}
@@ -59,7 +59,7 @@
                     <div class="w-full flex justify-center lg:justify-end">
                         <img src="{{ asset('images/hero-youth-cutout.png') }}" 
                              alt="Sinergi Pemimpin Pemuda Indonesia KNPI" 
-                             class="w-full max-w-lg sm:max-w-xl lg:max-w-none lg:w-[125%] xl:w-[130%] h-auto object-contain object-bottom drop-shadow-2xl select-none pointer-events-none translate-y-6 sm:translate-y-8 lg:translate-y-12">
+                             class="w-full max-w-md sm:max-w-xl lg:max-w-none lg:w-[125%] xl:w-[130%] h-auto object-contain object-bottom drop-shadow-2xl select-none pointer-events-none translate-y-6 sm:translate-y-8 lg:translate-y-12">
                     </div>
                 </div>
 
