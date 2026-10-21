@@ -5,9 +5,9 @@
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-slate-200 gap-4">
         <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-royal-800">Kanal Informasi</span>
-            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Warta & Siaran Pers Pemuda</h1>
-            <p class="text-xs sm:text-sm text-slate-500 mt-1">Publikasi berkala seputar dinamika kepemudaan, advokasi, dan program strategis KNPI.</p>
+            <span class="text-xs font-bold uppercase tracking-wider text-royal-800">{{ __('messages.news.tag') }}</span>
+            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">{{ __('messages.news.title') }}</h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">{{ app()->getLocale() === 'en' ? 'Periodic publications on youth dynamics, advocacy, and strategic KNPI programs.' : 'Publikasi berkala seputar dinamika kepemudaan, advokasi, dan program strategis KNPI.' }}</p>
         </div>
 
         <!-- Search input -->
@@ -17,10 +17,10 @@
             @endif
             <div class="relative w-full">
                 <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
-                <input type="text" name="q" value="{{ $search }}" placeholder="Cari berita..." class="w-full text-xs pl-9 pr-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-royal-800 focus:ring-1 focus:ring-royal-800 bg-white">
+                <input type="text" name="q" value="{{ $search }}" placeholder="{{ app()->getLocale() === 'en' ? 'Search news...' : 'Cari berita...' }}" class="w-full text-xs pl-9 pr-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:border-royal-800 focus:ring-1 focus:ring-royal-800 bg-white">
             </div>
             <button type="submit" class="px-4 py-2.5 rounded-lg text-xs font-bold text-white bg-royal-800 hover:bg-royal-900 transition">
-                Cari
+                {{ app()->getLocale() === 'en' ? 'Search' : 'Cari' }}
             </button>
         </form>
     </div>
@@ -28,7 +28,7 @@
     <!-- Category Filter Tabs -->
     <div class="flex items-center gap-2 overflow-x-auto py-6">
         <a href="{{ route('berita.index', ['q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition whitespace-nowrap {{ empty($categorySlug) ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">
-            Semua Kategori
+            {{ app()->getLocale() === 'en' ? 'All Categories' : 'Semua Kategori' }}
         </a>
         @foreach($categories as $cat)
             <a href="{{ route('berita.index', ['kategori' => $cat->slug, 'q' => $search]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-bold transition whitespace-nowrap {{ $categorySlug === $cat->slug ? 'bg-royal-800 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200' }}">

@@ -13,9 +13,18 @@ class Category extends Model
 
     protected $fillable = [
         'name',
+        'name_en',
         'slug',
         'description',
     ];
+
+    public function getNameAttribute($value): ?string
+    {
+        if (app()->getLocale() === 'en' && !empty($this->attributes['name_en'])) {
+            return $this->attributes['name_en'];
+        }
+        return $value;
+    }
 
     protected static function booted(): void
     {

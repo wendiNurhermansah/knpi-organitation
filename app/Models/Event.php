@@ -13,15 +13,42 @@ class Event extends Model
 
     protected $fillable = [
         'title',
+        'title_en',
         'slug',
         'description',
+        'description_en',
         'location',
+        'location_en',
         'start_time',
         'end_time',
         'quota',
         'banner_image',
         'is_open_registration',
     ];
+
+    public function getTitleAttribute($value): ?string
+    {
+        if (app()->getLocale() === 'en' && !empty($this->attributes['title_en'])) {
+            return $this->attributes['title_en'];
+        }
+        return $value;
+    }
+
+    public function getDescriptionAttribute($value): ?string
+    {
+        if (app()->getLocale() === 'en' && !empty($this->attributes['description_en'])) {
+            return $this->attributes['description_en'];
+        }
+        return $value;
+    }
+
+    public function getLocationAttribute($value): ?string
+    {
+        if (app()->getLocale() === 'en' && !empty($this->attributes['location_en'])) {
+            return $this->attributes['location_en'];
+        }
+        return $value;
+    }
 
     protected function casts(): array
     {

@@ -4,9 +4,9 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-xs text-slate-400 mb-6">
-        <a href="{{ route('home') }}" class="hover:text-royal-800">Beranda</a>
+        <a href="{{ route('home') }}" class="hover:text-royal-800">{{ __('messages.nav.home') }}</a>
         <span>/</span>
-        <a href="{{ route('berita.index') }}" class="hover:text-royal-800">Berita</a>
+        <a href="{{ route('berita.index') }}" class="hover:text-royal-800">{{ __('messages.nav.news') }}</a>
         <span>/</span>
         <span class="text-slate-600 truncate max-w-xs">{{ $article->title }}</span>
     </nav>
@@ -15,10 +15,10 @@
     <header class="space-y-4 mb-8">
         <div class="flex items-center gap-2">
             <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider bg-royal-800 text-white">
-                {{ $article->category->name ?? 'Kepemudaan' }}
+                {{ $article->category->name ?? 'KNPI' }}
             </span>
             <span class="text-xs text-slate-400">
-                <i data-lucide="eye" class="w-3.5 h-3.5 inline mr-1"></i>{{ number_format($article->views_count) }} tayangan
+                <i data-lucide="eye" class="w-3.5 h-3.5 inline mr-1"></i>{{ number_format($article->views_count) }} {{ __('messages.news.views') }}
             </span>
         </div>
 
@@ -39,7 +39,7 @@
 
             <!-- Share Buttons -->
             <div class="flex items-center gap-2">
-                <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline">Bagikan:</span>
+                <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline">{{ app()->getLocale() === 'en' ? 'Share:' : 'Bagikan:' }}</span>
                 <a href="#" class="p-1.5 rounded-md hover:bg-slate-100 text-slate-500 hover:text-royal-800"><i data-lucide="share-2" class="w-4 h-4"></i></a>
             </div>
         </div>

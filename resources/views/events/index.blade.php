@@ -4,9 +4,9 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Header -->
     <div class="pb-8 border-b border-slate-200">
-        <span class="text-xs font-bold uppercase tracking-wider text-royal-800">Kalender Kegiatan</span>
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Agenda & Forum Kepemudaan</h1>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">Ikuti kongres nasional, musyawarah OKP, pelatihan digital, dan forum dialog kebangsaan.</p>
+        <span class="text-xs font-bold uppercase tracking-wider text-royal-800">{{ __('messages.events.tag') }}</span>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">{{ __('messages.events.title') }}</h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">{{ __('messages.events.sub') }}</p>
     </div>
 
     <!-- Events Grid -->
@@ -22,7 +22,7 @@
                                 {{ $event->start_time->translatedFormat('d M Y') }}
                             </span>
                             <span class="text-xs font-semibold text-slate-500">
-                                Sisa: <strong class="text-royal-800">{{ $event->remaining_quota }}</strong> / {{ $event->quota }}
+                                {{ __('messages.events.quota_left') }}: <strong class="text-royal-800">{{ $event->remaining_quota }}</strong> / {{ $event->quota }}
                             </span>
                         </div>
 
@@ -49,11 +49,11 @@
 
                         @if($event->is_open_registration && $event->remaining_quota > 0)
                             <button @click="modalOpen = true" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-900 bg-gold-500 hover:bg-gold-400 active:scale-95 transition shadow-xs">
-                                Daftar Sekarang
+                                {{ __('messages.events.register') }}
                             </button>
                         @else
                             <span class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 bg-slate-100">
-                                Ditutup
+                                {{ __('messages.events.closed') }}
                             </span>
                         @endif
                     </div>

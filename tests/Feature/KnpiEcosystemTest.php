@@ -153,27 +153,41 @@ class KnpiEcosystemTest extends TestCase
         $switchResponse = $this->get('/lang/en');
         $switchResponse->assertSessionHas('locale', 'en');
 
-        // Verify English content on home page
+        // Verify English content and dynamic translated database records on home page
         $enPage = $this->withSession(['locale' => 'en'])->get('/');
         $enPage->assertStatus(200);
+        // Section Headers
         $enPage->assertSee('Youth Synergy');
         $enPage->assertSee('Building the Nation');
         $enPage->assertSee('Featured Youth News');
         $enPage->assertSee('Registered OKP Directory');
         $enPage->assertSee('Upcoming Youth Events');
+        // Dynamic Article content in English
+        $enPage->assertSee('Youth Synergy, Building the Nation Towards Golden Indonesia 2045');
+        $enPage->assertSee('KNPI underscores the strategic role of youth');
+        // Dynamic Event content in English
+        $enPage->assertSee('National Leadership Meeting (RAPIMNAS) of Indonesian Youth 2026');
+        $enPage->assertSee('National youth leadership assembly');
 
         // Switch back to Indonesian
         $switchId = $this->get('/lang/id');
         $switchId->assertSessionHas('locale', 'id');
 
-        // Verify Indonesian content on home page
+        // Verify Indonesian content and dynamic database records on home page
         $idPage = $this->withSession(['locale' => 'id'])->get('/');
         $idPage->assertStatus(200);
+        // Section Headers
         $idPage->assertSee('Sinergi Pemuda');
         $idPage->assertSee('Membangun Bangsa');
         $idPage->assertSee('Warta Pemuda Pilihan');
         $idPage->assertSee('Direktori OKP Terdaftar');
         $idPage->assertSee('Agenda Pemuda Mendatang');
+        // Dynamic Article content in Indonesian
+        $idPage->assertSee('Sinergi Pemuda, Membangun Bangsa Menuju Indonesia Emas 2045');
+        $idPage->assertSee('KNPI mempertegas peranan strategis generasi muda');
+        // Dynamic Event content in Indonesian
+        $idPage->assertSee('Rapat Pimpinan Nasional (RAPIMNAS) Pemuda Indonesia 2026');
+        $idPage->assertSee('Musyawarah koordinasi pimpinan organisasi kepemudaan nasional');
     }
 
     /**
