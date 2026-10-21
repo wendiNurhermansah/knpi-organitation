@@ -7,11 +7,11 @@
         <div class="absolute inset-0 hero-pattern opacity-30"></div>
         
         <!-- Gold Angular Accent Slice (Matches UI Mockup) -->
-        <div class="absolute right-0 top-0 bottom-0 w-1/3 lg:w-5/12 bg-gradient-to-l from-gold-500/30 to-transparent pointer-events-none hidden md:block"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-1/4 lg:w-[28%] bg-gold-500 [clip-path:polygon(38%_0,100%_0,100%_100%,0_100%)] pointer-events-none hidden md:block shadow-2xl"></div>
         <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-gold-500/20 blur-3xl pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 
                 <!-- Left Hero Content (7 Cols) -->
                 <div class="lg:col-span-7 space-y-6">
@@ -55,40 +55,38 @@
                 </div>
 
                 <!-- Right Hero Banner Showcase (5 Cols) -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Card Frame -->
-                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-400/20 bg-gradient-to-tr from-royal-900 via-royal-800 to-royal-700 p-3">
-                            <div class="rounded-xl overflow-hidden bg-slate-800 aspect-4/3 relative flex items-center justify-center">
-                                <!-- Realistic Simulated Hero Graphic -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-royal-950 via-royal-900/60 to-transparent z-10"></div>
-                                
-                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Pemuda Indonesia Bersatu" class="w-full h-full object-cover">
+                <div class="lg:col-span-5 relative flex items-end justify-center lg:justify-end">
+                    <div class="relative w-full max-w-lg lg:max-w-none">
+                        <!-- Card Frame with Authentic Indonesian Youth Leaders -->
+                        <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-blue-400/30 bg-royal-950 group">
+                            <img src="{{ asset('images/hero-leaders.jpg') }}" alt="Sinergi Pemimpin Pemuda Indonesia KNPI" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            
+                            <!-- Subtle Gradient Bottom Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-royal-950/70 via-transparent to-transparent pointer-events-none"></div>
 
-                                <!-- Floating Badge on Hero Image -->
-                                <div class="absolute bottom-4 left-4 right-4 z-20 bg-slate-900/85 backdrop-blur-md rounded-xl p-3 border border-white/10 flex items-center justify-between">
-                                    <div class="flex items-center gap-2.5">
-                                        <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-9 h-9 object-contain drop-shadow-xs">
-                                        <div>
-                                            <div class="text-[10px] text-gold-400 font-bold uppercase tracking-wider">{{ __('messages.hero.slogan') }}</div>
-                                            <div class="text-xs font-semibold text-white">{{ __('messages.hero.event_tag') }}</div>
-                                        </div>
+                            <!-- Floating Badge on Hero Image -->
+                            <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 z-20 bg-slate-900/85 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-white/10 flex items-center justify-between shadow-lg">
+                                <div class="flex items-center gap-2.5">
+                                    <img src="{{ asset('images/knpi-logo.png') }}" alt="Logo Resmi KNPI" class="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-xs">
+                                    <div>
+                                        <div class="text-[10px] text-gold-400 font-bold uppercase tracking-wider">{{ __('messages.hero.slogan') }}</div>
+                                        <div class="text-xs font-semibold text-white">{{ __('messages.hero.event_tag') }}</div>
                                     </div>
-                                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                                        {{ __('messages.hero.active') }}
-                                    </span>
                                 </div>
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap">
+                                    {{ __('messages.hero.active') }}
+                                </span>
                             </div>
                         </div>
 
-                        <!-- Floating Stat Accent Chip (Repositioned to Top-Right to prevent overlap) -->
-                        <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white/95 backdrop-blur-md text-slate-800 p-3.5 sm:p-4 rounded-2xl shadow-xl border border-slate-200/90 hidden sm:flex items-center gap-3 z-30 transition hover:scale-105 duration-200">
-                            <div class="w-10 h-10 rounded-xl bg-royal-50 flex items-center justify-center text-royal-800 shrink-0">
-                                <i data-lucide="award" class="w-5 h-5"></i>
+                        <!-- Floating Stat Accent Chip (Placed Top-Right to prevent any overlap) -->
+                        <div class="absolute -top-3 -right-3 sm:-top-5 sm:-right-5 bg-white/95 backdrop-blur-md text-slate-800 p-3 sm:p-3.5 rounded-2xl shadow-xl border border-slate-200/90 hidden sm:flex items-center gap-2.5 z-30 transition hover:scale-105 duration-200">
+                            <div class="w-9 h-9 rounded-xl bg-royal-50 flex items-center justify-center text-royal-800 shrink-0">
+                                <i data-lucide="award" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                             </div>
                             <div>
-                                <div class="text-base sm:text-lg font-black text-slate-900 leading-none">100%</div>
-                                <div class="text-[11px] font-semibold text-slate-500 mt-0.5 whitespace-nowrap">{{ __('messages.hero.transparency') }}</div>
+                                <div class="text-sm sm:text-base font-black text-slate-900 leading-none">100%</div>
+                                <div class="text-[10px] font-semibold text-slate-500 mt-0.5 whitespace-nowrap">{{ __('messages.hero.transparency') }}</div>
                             </div>
                         </div>
                     </div>
