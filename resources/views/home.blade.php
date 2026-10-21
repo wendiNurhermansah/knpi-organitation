@@ -81,14 +81,14 @@
                             </div>
                         </div>
 
-                        <!-- Floating Stat Accent Chip -->
-                        <div class="absolute -bottom-6 -left-6 bg-white text-slate-800 p-4 rounded-xl shadow-xl border border-slate-200 hidden sm:flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-royal-50 flex items-center justify-center text-royal-800">
+                        <!-- Floating Stat Accent Chip (Repositioned to Top-Right to prevent overlap) -->
+                        <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white/95 backdrop-blur-md text-slate-800 p-3.5 sm:p-4 rounded-2xl shadow-xl border border-slate-200/90 hidden sm:flex items-center gap-3 z-30 transition hover:scale-105 duration-200">
+                            <div class="w-10 h-10 rounded-xl bg-royal-50 flex items-center justify-center text-royal-800 shrink-0">
                                 <i data-lucide="award" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <div class="text-lg font-black text-slate-900 leading-none">100%</div>
-                                <div class="text-[11px] font-medium text-slate-500">{{ __('messages.hero.transparency') }}</div>
+                                <div class="text-base sm:text-lg font-black text-slate-900 leading-none">100%</div>
+                                <div class="text-[11px] font-semibold text-slate-500 mt-0.5 whitespace-nowrap">{{ __('messages.hero.transparency') }}</div>
                             </div>
                         </div>
                     </div>
